@@ -1,6 +1,13 @@
+# Compiled kernel files
 *.o
-*.iso
 *.bin
 *.elf
+
+# ISO images
+*.iso
+
+# Build directory
 build/
+
+# VS Code settings
 .vscode/
