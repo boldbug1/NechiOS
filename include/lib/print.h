@@ -13,6 +13,10 @@ void clear_screen();
 void backspace();
 
 // Мигающий курсор
+<<<<<<< HEAD
 void update_cursor_blink();
 
 void move_cursor(int pos);
+=======
+void update_cursor_blink();
+>>>>>>> main

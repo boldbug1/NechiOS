@@ -12,6 +12,10 @@ void kernel_main()
 
     while (1)
     {
+<<<<<<< HEAD
         shell_run();
+=======
+        update_cursor_blink();
+>>>>>>> main
     }
 }
