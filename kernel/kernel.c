@@ -22,6 +22,8 @@ void kernel_main()
 {
     gdt_load();
 
+    clear_screen();
+
     // Logo
     logo();
 
