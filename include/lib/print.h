@@ -14,3 +14,5 @@ void backspace();
 
 // Мигающий курсор
 void update_cursor_blink();
+
+void move_cursor(int pos);

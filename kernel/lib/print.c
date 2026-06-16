@@ -2,9 +2,6 @@
 
 int cursor_pos = 0;
 
-int cursor_visible = 1;
-int blink_counter = 0;
-
 // Белый цвет
 void print_char(char c)
 {
@@ -18,6 +15,7 @@ void print_char(char c)
 
     vga[cursor_pos] = (0x07 << 8) | c;
     cursor_pos++;
+    move_cursor(cursor_pos);
 }
 
 void print(const char *str)
@@ -52,23 +50,13 @@ void backspace()
     }
 }
 
-// Blinking Cursor
-void update_cursor_blink()
+void move_cursor(int pos)
 {
-    unsigned short *vga = (unsigned short *)0xB8000;
+    unsigned short offset = pos;
 
-    blink_counter++;
+    __asm__ volatile ("outb %0, %1" : : "a"((unsigned char)(offset & 0xFF)), "Nd"(0x3D5));
+    __asm__ volatile ("outb %0, %1" : : "a"(0x0F), "Nd"(0x3D4));
 
-    if (blink_counter > 50000)
-    {
-        blink_counter = 0;
-        cursor_visible = !cursor_visible;
-
-        int pos = cursor_pos;
-
-        if (cursor_visible)
-            vga[pos] = (0x07 << 8) | '_';
-        else
-            vga[pos] = (0x07 << 8) | ' ';
-    }
+    __asm__ volatile ("outb %0, %1" : : "a"((unsigned char)((offset >> 8) & 0xFF)), "Nd"(0x3D5));
+    __asm__ volatile ("outb %0, %1" : : "a"(0x0E), "Nd"(0x3D4));
 }

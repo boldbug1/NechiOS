@@ -9,10 +9,9 @@ void kernel_main()
     gdt_load();
 
     terminal_init();
-    shell_run();
 
     while (1)
     {
-        update_cursor_blink();
+        shell_run();
     }
 }
