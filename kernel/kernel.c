@@ -1,5 +1,4 @@
 #include "include/lib/print.h"
-#include "include/keyboard driver/keyboard.h"
 
 void kernel_main()
 {
