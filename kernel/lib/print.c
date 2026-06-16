@@ -1,41 +1,28 @@
-#include "../../include/lib/print.h"
+#include "include/lib/print.h"
 
 int cursor_pos = 0;
 
-static inline void outb(unsigned short port, unsigned char val)
+void print_char(char c)
 {
-    __asm__ volatile("outb %0, %1" : : "a"(val), "Nd"(port));
-}
+    unsigned short *vga = (unsigned short *)0xB8000;
 
-void set_cursor(int pos)
-{
-    outb(0x3D4, 0x0F);
-    outb(0x3D5, (unsigned char)(pos & 0xFF));
+    if (c == '\n')
+    {
+        cursor_pos = (cursor_pos / 80 + 1) * 80;
+        return;
+    }
 
-    outb(0x3D4, 0x0E);
-    outb(0x3D5, (unsigned char)((pos >> 8) & 0xFF));
+    vga[cursor_pos] = (0x07 << 8) | c;
+    cursor_pos++;
 }
 
 void print(const char *str)
 {
-    unsigned short *vga = (unsigned short *)0xB8000;
-
-    for (int i = 0; str[i] != '\0'; i++)
+    while (*str)
     {
-        if (str[i] == '\n')
-        {
-            cursor_pos = (cursor_pos / 80 + 1) * 80;
-            continue;
-        }
-
-        vga[cursor_pos] = (0x07 << 8) | str[i];
-        cursor_pos++;
-
-        if (cursor_pos >= 80 * 25)
-            cursor_pos = 0; // пока без scroll
+        print_char(*str);
+        str++;
     }
-
-    set_cursor(cursor_pos);
 }
 
 #define VGA ((unsigned short *)0xB8000)
@@ -46,5 +33,13 @@ void clear_screen()
         VGA[i] = (0x07 << 8) | ' ';
 
     cursor_pos = 0;
-    set_cursor(cursor_pos);
+}
+
+void backspace()
+{
+    if (cursor_pos > 0)
+    {
+        cursor_pos--;
+        ((unsigned short *)0xB8000)[cursor_pos] = (0x07 << 8) | ' ';
+    }
 }

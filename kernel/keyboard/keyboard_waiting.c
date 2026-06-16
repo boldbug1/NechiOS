@@ -1,17 +1,28 @@
 #include "include/keyboard/keyboard_waiting.h"
 
+static inline unsigned char inb(unsigned short port)
+{
+    unsigned char ret;
+    __asm__ volatile("inb %1, %0"
+                     : "=a"(ret)
+                     : "Nd"(port));
+    return ret;
+}
+
 unsigned char keyboard_get_key()
 {
-    unsigned char scancode;
+    unsigned char status;
+    unsigned char keycode;
 
     while (1)
     {
-        __asm__ volatile(
-            "inb $0x60, %0"
-            : "=a"(scancode));
+        status = inb(0x64);
 
-        if (scancode != 0 && !(scancode & 0x80))
-            return scancode;
+        if (status & 1)
+        {
+            keycode = inb(0x60);
+            return keycode;
+        }
     }
 }
 
