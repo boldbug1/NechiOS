@@ -18,6 +18,7 @@ void print_char(char c)
 
     vga[cursor_pos] = (0x07 << 8) | c;
     cursor_pos++;
+    move_cursor(cursor_pos);
 }
 
 void print(const char *str)
@@ -52,6 +53,17 @@ void backspace()
     }
 }
 
+<<<<<<< HEAD
+void move_cursor(int pos)
+{
+    unsigned short offset = pos;
+
+    __asm__ volatile ("outb %0, %1" : : "a"((unsigned char)(offset & 0xFF)), "Nd"(0x3D5));
+    __asm__ volatile ("outb %0, %1" : : "a"(0x0F), "Nd"(0x3D4));
+
+    __asm__ volatile ("outb %0, %1" : : "a"((unsigned char)((offset >> 8) & 0xFF)), "Nd"(0x3D5));
+    __asm__ volatile ("outb %0, %1" : : "a"(0x0E), "Nd"(0x3D4));
+=======
 // Blinking Cursor
 void update_cursor_blink()
 {
@@ -71,4 +83,5 @@ void update_cursor_blink()
         else
             vga[pos] = (0x07 << 8) | ' ';
     }
+>>>>>>> main
 }
