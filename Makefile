@@ -5,7 +5,7 @@ LD = ld
 CFLAGS = -m32 -ffreestanding -c -I.
 LDFLAGS = -m elf_i386 -T
 
-OBJS = boot.o kernel.o print.o gdt.o
+OBJS = boot.o gdt.o kernel.o print.o keyboard_waiting.o
 
 clean:
 	rm *.o *.bin *.iso
@@ -16,6 +16,7 @@ all:
 
 	$(GCC) $(CFLAGS) kernel/kernel.c -o kernel.o
 	$(GCC) $(CFLAGS) kernel/lib/print.c -o print.o
+	$(GCC) $(CFLAGS) kernel/keyboard/keyboard_waiting.c -o keyboard_waiting.o
 
 	$(LD) $(LDFLAGS) linker.ld -o kernel.bin $(OBJS)
 
