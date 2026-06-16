@@ -5,11 +5,6 @@
 
 
 ---
-
-## 🚀 Run NechiOS
-
-[![Run in QEMU](https://img.shields.io/badge/Run%20in-QEMU-blue?style=for-the-badge)](https://github.com/USERNAME/NechiOS/actions/workflows/run.yml)
-
 ##  О проекте
 
 **NechiOS** — это операционная система, разрабатываемая мной с нуля.
