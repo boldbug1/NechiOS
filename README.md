@@ -1,176 +1,153 @@
-#  NechiOS
+NechiOS
 
-> Собственная операционная система, создаваемая с нуля на C и Assembly.
-
-
-
----
-##  О проекте
-
-**NechiOS** — это операционная система, разрабатываемая мной с нуля.
-Основные цели проекта:
-
-*  Создать собственное ядро и системные компоненты
-*  Изучить низкоуровневое программирование
-*  Подготовить платформу для приложений и игр формата `.nechi`
+«A custom operating system built from scratch using C and Assembly.»
 
 ---
 
-##  Текущее состояние
+About the Project
 
-Проект находится на ранней стадии разработки.
+NechiOS is an operating system developed from scratch by me.
+The main goals of the project:
 
-### Уже реализовано
+* Create a custom kernel and system components
+* Learn low-level programming
+* Build a platform for applications and games using the ".nechi" format
 
-* ✅ GRUB загрузка
-* ✅ Multiboot
+---
+
+Current Status
+
+The project is currently in an early stage of development.
+
+Implemented
+
+* ✅ GRUB booting
+* ✅ Multiboot support
 * ✅ GDT
-* ✅ Переход в ядро
-* ✅ Сборка ISO
-* ✅ Запуск через QEMU
+* ✅ Kernel entry
+* ✅ ISO building
+* ✅ Running through QEMU
 
-### Планируется
+Planned Features
 
 * 🔲 IDT
-* 🔲 Обработка прерываний
-* 🔲 Менеджер памяти
-* 🔲 Файловая система
-* 🔲 Драйверы устройств
-* 🔲 Графический интерфейс
+* 🔲 Interrupt handling
+* 🔲 Memory manager
+* 🔲 File system
+* 🔲 Device drivers
+* 🔲 Graphical interface
 
 ---
 
-## 🛠 Требования
+🛠 Requirements
 
-Для сборки понадобятся:
+To build NechiOS, you will need:
 
-```bash
 qemu
 gcc
 ld
 nasm
 grub
 make
-```
 
-## 🔧 Установка инструментов
+🔧 Installing Tools
 
-### Ubuntu / Debian / WSL
+Ubuntu / Debian / WSL
 
-Обновляем пакеты:
+Update packages:
 
-```bash
 sudo apt update
-```
 
-Устанавливаем необходимые инструменты:
+Install required tools:
 
-```bash
 sudo apt install build-essential gcc nasm grub-pc-bin xorriso qemu-system-x86 make
-```
 
-Проверяем установку:
+Check installation:
 
-```bash
 gcc --version
 nasm -v
 qemu-system-i386 --version
 grub-mkrescue --version
-```
 
 ---
 
-### Arch Linux
+Arch Linux
 
-```bash
 sudo pacman -S gcc nasm grub xorriso qemu make
-```
 
 ---
 
-### Fedora
+Fedora
 
-```bash
 sudo dnf install gcc nasm grub2-tools xorriso qemu-system-x86 make
-```
 
 ---
 
-### Windows
+Windows
 
-Рекомендуется использовать **WSL (Windows Subsystem for Linux)**.
+Using WSL (Windows Subsystem for Linux) is recommended.
 
-1. Откройте PowerShell от имени администратора.
-2. Выполните:
+1. Open PowerShell as Administrator.
+2. Run:
 
-```powershell
 wsl --install
-```
 
-3. Перезагрузите компьютер.
-4. Откройте Ubuntu и выполните команды из раздела Ubuntu / Debian.
-
----
-
-### Проверка
-
-После установки выполните:
-
-```bash
-make all
-make run
-```
-
-Если система запустилась в QEMU — всё настроено правильно.
-
+3. Restart your computer.
+4. Open Ubuntu and follow the instructions from the Ubuntu / Debian section.
 
 ---
 
-## 📦 Сборка
+Verification
 
-Создание ISO образа:
+After installing all dependencies, run:
 
-```bash
 make all
-```
-
-Запуск в QEMU:
-
-```bash
 make run
-```
 
-Очистка временных файлов:
+If the system starts in QEMU, everything is configured correctly.
 
-```bash
+---
+
+📦 Building
+
+Create an ISO image:
+
+make all
+
+Run in QEMU:
+
+make run
+
+Clean temporary files:
+
 make clean
-```
 
 ---
 
-## 🤝 Контрибьютерство
+🤝 Contributing
 
-Если вам интересна разработка операционных систем, низкоуровневое программирование на C и Assembly — буду рад помощи.
+If you are interested in operating system development, low-level programming in C and Assembly, contributions are welcome.
 
-Вы можете:
+You can:
 
-* Исправлять ошибки
-* Улучшать код ядра
-* Добавлять новые возможности
-* Улучшать документацию
+* Fix bugs
+* Improve kernel code
+* Add new features
+* Improve documentation
 
-Все контрибьютеры будут указаны в отдельном файле проекта.
-
----
-
-##  Автор
-
-Создание проекта начато **16 июня 2026 года**.
-
-Владелец: **NechiGames**
-
-Разработчик (Главный контрибьютер): **NechiCyber**
+All contributors will be listed in a separate file in the project.
 
 ---
 
-> Будьте пользователем, либо контрибьютером, все нужны. А также используйте VS Code, так как ОС создавалась именно там.
+Author
+
+Development started on June 16, 2026.
+
+Owner: NechiGames
+
+Main Developer (Lead Contributor): NechiCyber
+
+---
+
+«You can be a user or a contributor — everyone is welcome.
+Also, use VS Code, because this operating system was created using it.»
