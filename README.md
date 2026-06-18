@@ -1,12 +1,25 @@
+<div align="center">
+
 # NechiOS
 
-«A custom operating system built from scratch using C and Assembly.»
+</div>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/Language-C-blue.svg">
+  <img src="https://img.shields.io/badge/Assembly-NASM-orange.svg">
+  <img src="https://img.shields.io/badge/Bootloader-GRUB-green.svg">
+  <img src="https://img.shields.io/badge/Platform-x86-lightgrey.svg">
+  <img src="https://img.shields.io/badge/Status-Early%20Development-yellow.svg">
+</p>
+
+> *A custom operating system built from scratch using C and Assembly.*
 
 ---
 
-# About the Project
+## About the Project
 
 NechiOS is an operating system developed from scratch by me.
+
 The main goals of the project:
 
 * Create a custom kernel and system components
@@ -15,116 +28,126 @@ The main goals of the project:
 
 ---
 
-# Current Status
+## Current Status
 
 The project is currently in an early stage of development.
 
-Implemented
+### Development Progress
 
-* ✅ GRUB booting
-* ✅ Multiboot support
-* ✅ GDT
-* ✅ Kernel entry
-* ✅ ISO building
-* ✅ Running through QEMU
-
-Planned Features
-
-* 🔲 IDT
-* 🔲 Interrupt handling
-* 🔲 Memory manager
-* 🔲 File system
-* 🔲 Device drivers
-* 🔲 Graphical interface
-
----
-
-# 🛠 Requirements
-
-To build NechiOS, you will need:
-
-qemu
-gcc
-ld
-nasm
-grub
-make
-
-# 🔧 Installing Tools
-
-Ubuntu / Debian / WSL
-
-Update packages:
-
-sudo apt update
-
-Install required tools:
-
-sudo apt install build-essential gcc nasm grub-pc-bin xorriso qemu-system-x86 make
-
-Check installation:
-
-gcc --version
-nasm -v
-qemu-system-i386 --version
-grub-mkrescue --version
+| Component            | Status   |
+| -------------------- | -------- |
+| GRUB booting         | Complete |
+| Multiboot support    | Complete |
+| GDT                  | Complete |
+| Kernel entry         | Complete |
+| ISO building         | Complete |
+| Running through QEMU | Complete |
+| IDT                  | Planned  |
+| Interrupt handling   | Planned  |
+| Memory manager       | Planned  |
+| File system          | Planned  |
+| Device drivers       | Planned  |
+| Graphical interface  | Planned  |
 
 ---
 
-## Arch Linux
+## Project Structure
 
-sudo pacman -S gcc nasm grub xorriso qemu make
-
+```text
+NechiOS/
+├── include/          # Header files
+│   ├── keyboard/
+│   └── lib/
+├── kernel/           # Kernel source code
+│   ├── keyboard/
+│   └── lib/
+├── multiboot/        # Boot and GDT assembly code
+├── Makefile          # Build system
+├── linker.ld         # Linker script
+└── README.md
+```
 ---
 
-## Fedora
+## 🛠 Requirements & Installation
 
-sudo dnf install gcc nasm grub2-tools xorriso qemu-system-x86 make
+To build and run **NechiOS**, ensure you have the following prerequisites installed:
 
----
+* `gcc` & `ld` (GNU Compiler Collection & Linker)
+* `nasm` (Netwide Assembler)
+* `make` (GNU Build Automation Tool)
+* `grub` (GRUB Bootloader Utilities)
+* `xorriso` (ISO Image Creation Tool)
+* `qemu` (Processor Emulator)
 
-## Windows
+Choose your operating system below to install all dependencies at once.
 
-Using WSL (Windows Subsystem for Linux) is recommended.
+### 🐧 Ubuntu / Debian / WSL
 
-1. Open PowerShell as Administrator.
-2. Run:
+```bash
+sudo apt update && sudo apt install -y build-essential gcc nasm grub-pc-bin xorriso qemu-system-x86 make
+```
 
+### 🦥 Arch Linux
+
+```bash
+sudo pacman -Syu --needed gcc nasm grub xorriso qemu make
+```
+
+### 🎩 Fedora
+
+```bash
+sudo dnf install -y gcc nasm grub2-tools xorriso qemu-system-x86 make
+```
+
+### 🪟 Windows
+
+Using **WSL (Windows Subsystem for Linux)** is highly recommended.
+
+1. Open **PowerShell** as Administrator and run:
+
+```powershell
 wsl --install
+```
 
-3. Restart your computer.
-4. Open Ubuntu and follow the instructions from the Ubuntu / Debian section.
-
----
-
-# Verification
-
-After installing all dependencies, run:
-
-make all
-make run
-
-If the system starts in QEMU, everything is configured correctly.
+2. Restart your computer.
+3. Open the installed Ubuntu distribution and follow the **Ubuntu / Debian** instructions above.
 
 ---
 
-# 📦 Building
+## 🔍 Verification & Running
 
-Create an ISO image:
+After installation, verify that everything is configured correctly by booting the system in QEMU:
 
+```bash
 make all
-
-Run in QEMU:
-
 make run
+```
 
-Clean temporary files:
+---
 
+## 📦 Build Commands
+
+### Create an ISO image
+
+```bash
+make all
+```
+
+### Run the system in QEMU
+
+```bash
+make run
+```
+
+### Clean temporary build files
+
+```bash
 make clean
+```
 
 ---
 
-# 🤝 Contributing
+## 🤝 Contributing
 
 If you are interested in operating system development, low-level programming in C and Assembly, contributions are welcome.
 
@@ -139,15 +162,16 @@ All contributors will be listed in a separate file in the project.
 
 ---
 
-# Author
+## Author
 
 Development started on June 16, 2026.
 
-Owner: NechiGames
+**Owner:** NechiGames
 
-Main Developer (Lead Contributor): NechiCyber
+**Main Developer (Lead Contributor):** NechiCyber
 
 ---
 
-«You can be a user or a contributor — everyone is welcome.
-Also, use VS Code, because this operating system was created using it.»
+> *You can be a user or a contributor — everyone is welcome.*
+>
+> *Also, use VS Code, because this operating system was created using it.*
